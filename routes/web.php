@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// Panggil Controller yang baru dibuat
-use App\Http\Controllers\GreetingsController;
+use App\Http\Controllers\PortfolioController;
 
-// Tugas 1 & 4: Rute dasar ke metode welcome()
-Route::get('/', [GreetingsController::class, 'welcome']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Tugas 2 & 4: Rute dengan dua parameter ke metode greet()
-Route::get('/halo/{name}/{npm}', [GreetingsController::class, 'greet']);
+Route::get('/home', [PortfolioController::class, 'home']);
+Route::get('/profil', [PortfolioController::class, 'profil']);
+Route::get('/pendidikan', [PortfolioController::class, 'pendidikan']);
+Route::get('/keahlian', [PortfolioController::class, 'keahlian']);
