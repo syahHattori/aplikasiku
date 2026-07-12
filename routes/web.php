@@ -31,3 +31,25 @@ Route::middleware('auth')->group(function () {
         return redirect()->route('login.manual')->with('success', 'Anda telah logged out.');
     })->name('logout.manual');
 });
+
+// ROUTE MODUL 7
+Route::get('login-custom', [App\Http\Controllers\UserController::class, 'showLoginForm'])->name('login-custom');
+Route::post('login-custom', [App\Http\Controllers\UserController::class, 'login'])->name('login-custom.post');
+Route::get('logout-custom', [App\Http\Controllers\UserController::class, 'logout'])->name('logout-custom');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('home-custom', [App\Http\Controllers\UserController::class, 'showHome'])->name('home-custom');
+    
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('admin', [App\Http\Controllers\UserController::class, 'showAdmin'])->name('admin');
+    });
+    
+    Route::middleware(['role:owner'])->group(function () {
+        Route::get('owner', [App\Http\Controllers\UserController::class, 'showOwner'])->name('owner');
+    });
+    
+    // Route Tugas (Hanya bisa diakses jika usia minimal 18)
+    Route::middleware(['usia:18'])->group(function () {
+        Route::get('dewasa', [App\Http\Controllers\UserController::class, 'showDewasa'])->name('dewasa');
+    });
+});
