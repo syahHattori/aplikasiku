@@ -53,3 +53,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('dewasa', [App\Http\Controllers\UserController::class, 'showDewasa'])->name('dewasa');
     });
 });
+
+// ROUTE MODUL 8
+Route::get('/upload', [App\Http\Controllers\FileUploadController::class, 'showUploadForm'])->name('upload.form');
+Route::post('/upload', [App\Http\Controllers\FileUploadController::class, 'storeFile'])->name('upload.store');
+Route::get('/files', [App\Http\Controllers\FileUploadController::class, 'listFiles'])->name('files.list');
+Route::delete('/files/{filename}', [App\Http\Controllers\FileUploadController::class, 'deleteFile'])->name('files.delete');
