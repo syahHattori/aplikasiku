@@ -59,3 +59,10 @@ Route::get('/upload', [App\Http\Controllers\FileUploadController::class, 'showUp
 Route::post('/upload', [App\Http\Controllers\FileUploadController::class, 'storeFile'])->name('upload.store');
 Route::get('/files', [App\Http\Controllers\FileUploadController::class, 'listFiles'])->name('files.list');
 Route::delete('/files/{filename}', [App\Http\Controllers\FileUploadController::class, 'deleteFile'])->name('files.delete');
+
+// ROUTE MODUL 9 (SCAN QR)
+Route::get('/scankode', [App\Http\Controllers\ScanController::class, 'scanKode']);
+Route::post('/scan', [App\Http\Controllers\ScanController::class, 'processScan']);
+Route::get('/scan-data-produk', function() { return view('scandataproduk'); });
+Route::post('/scan-produk', [App\Http\Controllers\ScanController::class, 'processScanProduk']);
+Route::get('/generate-qr/{sku}', [App\Http\Controllers\ScanController::class, 'generateQr']); // Tugas 4
