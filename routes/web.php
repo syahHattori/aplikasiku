@@ -66,3 +66,7 @@ Route::post('/scan', [App\Http\Controllers\ScanController::class, 'processScan']
 Route::get('/scan-data-produk', function() { return view('scandataproduk'); });
 Route::post('/scan-produk', [App\Http\Controllers\ScanController::class, 'processScanProduk']);
 Route::get('/generate-qr/{sku}', [App\Http\Controllers\ScanController::class, 'generateQr']); // Tugas 4
+
+// ROUTE MODUL 10 (SweetAlert & DataTables)
+Route::resource('users', App\Http\Controllers\ManageUserController::class);
+Route::resource('products', App\Http\Controllers\ProductWebController::class);
