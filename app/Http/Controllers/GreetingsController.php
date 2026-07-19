@@ -15,6 +15,7 @@ class GreetingsController extends Controller
     // Metode untuk menangani rute dengan dua parameter (Nama dan NPM)
     public function greet($name, $npm)
     {
-        return 'Halo, ' . $name . ' meukeuta perkasa syah muhammad' . $npm . ' 238160008!';
+        // Langsung mengembalikan teks nama Ester Jesika Sihombing secara statis
+        return 'Halo, ester jesika sihombing 238160012!';
     }
 }

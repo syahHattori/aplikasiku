@@ -14,8 +14,8 @@ class PortfolioController extends Controller
     public function profil()
     {
         return view('profil', [
-            'nama' => 'Meukeuta Perkasa Syah Muhammad',
-            'npm' => '238160008'
+            'nama' => 'ester jesika sihombing',
+            'npm' => '238160012'
         ]);
     }
 

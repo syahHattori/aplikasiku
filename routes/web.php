@@ -2,11 +2,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PortfolioController;
 
 Route::get('/', function () { return view('welcome'); });
 Route::get('/nilai', [NilaiController::class, 'index'])->name('nilai.index');
 Route::resource('mahasiswa', MahasiswaController::class);
-
+Route::get('/halo/{name}/{npm}', [App\Http\Controllers\GreetingsController::class, 'greet']);
 // Route untuk Tugas Modul 5
 Route::get('/nilai/{mahasiswaId}', [NilaiController::class, 'showNilaiMahasiswa'])->name('tampilnilai');
 
@@ -70,3 +71,9 @@ Route::get('/generate-qr/{sku}', [App\Http\Controllers\ScanController::class, 'g
 // ROUTE MODUL 10 (SweetAlert & DataTables)
 Route::resource('users', App\Http\Controllers\ManageUserController::class);
 Route::resource('products', App\Http\Controllers\ProductWebController::class);
+
+// ROUTE MODUL 3 (PORTOFOLIO BLADE)
+Route::get('/home-portfolio', [PortfolioController::class, 'home']);
+Route::get('/profil', [PortfolioController::class, 'profil']);
+Route::get('/pendidikan', [PortfolioController::class, 'pendidikan']);
+Route::get('/keahlian', [PortfolioController::class, 'keahlian']);
